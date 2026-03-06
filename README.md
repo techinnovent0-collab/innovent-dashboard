@@ -16,3 +16,8 @@ Published via GitHub Pages from the `main` branch. Any commit to `main` automati
 4. Confirm that GitHub Pages redeploys (typically < 60 seconds).
 
 Last major refresh: 2026-03-05 — new color system, expanded KPI set, and additional charts (velocity, pipeline, channel mix, radar follow-ups).
+
+## Current State (2026-03-05)
+- No manual tasks are active.
+- Only scheduled item: weekly reminder to refresh knowledge/technical_proposal_hub.md.
+- Dashboard reflects a ready-but-idle posture per Ali's directive.
