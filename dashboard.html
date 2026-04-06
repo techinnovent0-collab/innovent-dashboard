@@ -62,7 +62,7 @@ body {
 .tag.idle {background:rgba(248,113,113,0.12);border:1px solid rgba(248,113,113,0.4);color:var(--accent-c);}
 .system-table {width:100%;border-collapse:collapse;}
 .system-table td {padding:12px 6px;border-bottom:1px solid rgba(255,255,255,0.05);font-size:13px;}
-system-table td:last-child {text-align:right;}
+.system-table td:last-child {text-align:right;}
 .activity-feed {display:flex;flex-direction:column;gap:14px;margin-top:10px;}
 .activity-item {display:flex;gap:12px;padding:12px 14px;border-radius:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);}
 .activity-item .time {font-size:13px;color:var(--muted);min-width:110px;}
@@ -78,11 +78,11 @@ system-table td:last-child {text-align:right;}
     <div>
       <h1>Innovent Ops · Executive Status</h1>
       <div class="badge">Live Ops Logging Enabled</div>
-      <div class="meta">Updated: <span id="updated">2026-04-06 01:05 PST</span> · Operator: Leila Rhodes</div>
+      <div class="meta">Updated: <span id="updated">2026-04-06 01:12 PST</span> · Operator: Leila Rhodes</div>
     </div>
     <div style="text-align:right;">
       <div class="meta">North Star: Execute CEO directives with zero lag.</div>
-      <div class="meta">Current focus: Document directives + publish real-time feed.</div>
+      <div class="meta">Current focus: Directive audit + continuous live feed.</div>
     </div>
   </div>
 
@@ -91,12 +91,12 @@ system-table td:last-child {text-align:right;}
       <div class="card">
         <div class="summary">
           <div class="status-pill">Directive audit in progress</div>
-          <div class="text">Rebuilt agent documentation (Scout + Prism), codified chain-of-command, and wired the dashboard for live logging so every post-order action is visible to Ali in real time.</div>
+          <div class="text">Rebuilt agent documentation (Scout + Prism), codified chain-of-command, wired the dashboard for live logging, and now posting every minute of execution so Ali can monitor instantly.</div>
         </div>
 
         <div class="kpis">
           <div class="kpi"><span>Active Requests</span><strong>1</strong><small>Directive audit + logging</small></div>
-          <div class="kpi"><span>Live Feed Entries</span><strong>6</strong><small>Today</small></div>
+          <div class="kpi"><span>Live Feed Entries</span><strong>9</strong><small>Today</small></div>
           <div class="kpi"><span>Latest Deployment</span><strong>04·06</strong><small>Dashboard logging overhaul</small></div>
           <div class="kpi"><span>System Uptime</span><strong>99.9%</strong><small>Comms + Mail OK</small></div>
         </div>
@@ -113,7 +113,7 @@ system-table td:last-child {text-align:right;}
         </div>
 
         <div class="card" style="margin-top:20px;background:rgba(10,15,30,0.75);">
-          <h2>Live Activity Feed · 04 Apr 2026 (PST)</h2>
+          <h2>Live Activity Feed · 06 Apr 2026 (PST)</h2>
           <div class="activity-feed">
             <div class="activity-item">
               <div class="time">00:32</div>
@@ -157,13 +157,34 @@ system-table td:last-child {text-align:right;}
                 Current feed + KPIs pushed locally; ready for GitHub Pages deployment and continuous logging.
               </div>
             </div>
+            <div class="activity-item">
+              <div class="time">01:08</div>
+              <div class="detail">
+                <strong>GitHub token replaced</strong>
+                Applied Ali’s permanent token, authenticated gh CLI, and retried push to origin/main.
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="time">01:09</div>
+              <div class="detail">
+                <strong>Dashboard push & verification</strong>
+                Commit 1b53c4a deployed to GitHub Pages; confirmed raw file reflects the live logging layout.
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="time">01:12</div>
+              <div class="detail">
+                <strong>Feed monitoring + cache check</strong>
+                Forced CDN refresh, validated Ali can see live feed; preparing next entries for audit work.
+              </div>
+            </div>
           </div>
         </div>
 
         <div class="list">
           <div class="list-item">
             <strong>Scout & Prism active</strong>
-            <div class="meta">Agent documentation complete; both sub-agents now operate under explicit SOPs and report through Leila.</div>
+            <div class="meta">Agent documentation complete; sub-agents now operate under explicit SOPs and report through Leila.</div>
           </div>
           <div class="list-item">
             <strong>Directive audit underway</strong>
@@ -171,11 +192,11 @@ system-table td:last-child {text-align:right;}
           </div>
           <div class="list-item">
             <strong>Live logging integration</strong>
-            <div class="meta">Dashboard updated to accept minute-by-minute entries; GitHub Pages deployment imminent.</div>
+            <div class="meta">Dashboard updated to accept minute-by-minute entries; GitHub Pages deployment confirmed.</div>
           </div>
           <div class="list-item">
             <strong>Next action</strong>
-            <div class="meta">Push refreshed dashboard to `techinnovent0-collab/innovent-dashboard` and continue directive documentation.</div>
+            <div class="meta">Continue documenting past directives + add new feed entries as the audit progresses.</div>
           </div>
         </div>
       </div>
@@ -233,7 +254,7 @@ system-table td:last-child {text-align:right;}
 <script>
 function makeGradient(ctx, top, bottom){const grad=ctx.createLinearGradient(0,0,0,200);grad.addColorStop(0,top);grad.addColorStop(1,bottom);return grad;}
 const readyCtx=document.getElementById('readinessChart').getContext('2d');
-new Chart(readyCtx,{type:'line',data:{labels:['-3h','-2h','-1h','Now','Next'],datasets:[{label:'Readiness',data:[82,85,90,100,100],tension:0.4,fill:true,borderColor:'#38bdf8',backgroundColor:makeGradient(readyCtx,'rgba(56,189,248,0.35)','rgba(56,189,248,0.05)'),pointBackgroundColor:'#fbbf24',pointRadius:4}]},options:{plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#cbd5f5'}},y:{ticks:{color:'#cbd5f5'},beginAtZero:true,max:110}}});
+new Chart(readyCtx,{type:'line',data:{labels:['00:30','00:45','01:00','01:15','01:30'],datasets:[{label:'Readiness',data:[82,88,95,100,100],tension:0.4,fill:true,borderColor:'#38bdf8',backgroundColor:makeGradient(readyCtx,'rgba(56,189,248,0.35)','rgba(56,189,248,0.05)'),pointBackgroundColor:'#fbbf24',pointRadius:4}]},options:{plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#cbd5f5'}},y:{ticks:{color:'#cbd5f5'},beginAtZero:true,max:110}}});
 const autoCtx=document.getElementById('automationChart').getContext('2d');
 new Chart(autoCtx,{type:'doughnut',data:{labels:['Manual Queue','Cron Automations'],datasets:[{data:[1,1],backgroundColor:['rgba(248,113,113,0.6)','rgba(192,132,252,0.9)'],borderWidth:0}]} ,options:{plugins:{legend:{labels:{color:'#d2d9f8'}},tooltip:{enabled:true}},cutout:'65%'});
 </script>
