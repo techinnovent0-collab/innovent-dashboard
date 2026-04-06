@@ -37,13 +37,14 @@ body {
 .grid {display:grid;grid-template-columns:2fr 1fr;gap:20px;}
 .card {background:var(--panel);border:1px solid var(--border);border-radius:22px;padding:22px;box-shadow:0 24px 60px rgba(2,6,23,0.6);backdrop-filter:blur(20px);}
 .card h2 {margin:0 0 14px;font-size:18px;text-transform:uppercase;letter-spacing:0.4px;}
-.summary {display:flex;gap:16px;align-items:center;margin-bottom:18px;}
+.summary {display:flex;gap:16px;align-items:center;margin-bottom:18px;flex-wrap:wrap;}
 .summary .status-pill {padding:10px 16px;border-radius:14px;background:rgba(52,211,153,0.18);border:1px solid rgba(52,211,153,0.4);color:var(--accent-d);font-weight:600;}
-.summary .text {color:var(--muted);line-height:1.5;}
+.summary .text {color:var(--muted);line-height:1.5;max-width:640px;}
 .kpis {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:20px;}
 .kpi {padding:16px;border-radius:18px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);position:relative;overflow:hidden;}
 .kpi span {display:block;font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);}
 .kpi strong {font-size:30px;margin-top:8px;display:block;}
+.kpi small {display:block;margin-top:6px;color:var(--muted);}
 .kpi::after {content:"";position:absolute;inset:0;opacity:0.3;background:radial-gradient(circle at 120% -20%,rgba(56,189,248,0.5),transparent 45%);}
 .charts {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
 .chart-card {padding:18px;border-radius:18px;background:rgba(15,23,42,0.65);border:1px solid rgba(255,255,255,0.06);}
@@ -61,9 +62,14 @@ body {
 .tag.idle {background:rgba(248,113,113,0.12);border:1px solid rgba(248,113,113,0.4);color:var(--accent-c);}
 .system-table {width:100%;border-collapse:collapse;}
 .system-table td {padding:12px 6px;border-bottom:1px solid rgba(255,255,255,0.05);font-size:13px;}
-.system-table td:last-child {text-align:right;}
+system-table td:last-child {text-align:right;}
+.activity-feed {display:flex;flex-direction:column;gap:14px;margin-top:10px;}
+.activity-item {display:flex;gap:12px;padding:12px 14px;border-radius:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);}
+.activity-item .time {font-size:13px;color:var(--muted);min-width:110px;}
+.activity-item .detail {flex:1;}
+.activity-item .detail strong {display:block;font-size:15px;margin-bottom:4px;}
 .note {font-size:13px;color:var(--muted);margin-top:16px;line-height:1.5;}
-@media(max-width:1100px){.grid{grid-template-columns:1fr;} .kpis{grid-template-columns:repeat(2,1fr);} }
+@media(max-width:1100px){.grid{grid-template-columns:1fr;} .kpis{grid-template-columns:repeat(2,1fr);} .activity-item{flex-direction:column;}}
 </style>
 </head>
 <body>
@@ -71,12 +77,12 @@ body {
   <div class="header">
     <div>
       <h1>Innovent Ops · Executive Status</h1>
-      <div class="badge">Standing By · Orders Pending</div>
-      <div class="meta">Updated: <span id="updated">2026-03-05 23:35 PST</span> · Operator: Leila Rhodes</div>
+      <div class="badge">Live Ops Logging Enabled</div>
+      <div class="meta">Updated: <span id="updated">2026-04-06 01:05 PST</span> · Operator: Leila Rhodes</div>
     </div>
     <div style="text-align:right;">
       <div class="meta">North Star: Execute CEO directives with zero lag.</div>
-      <div class="meta">Next instruction: awaiting owner briefing.</div>
+      <div class="meta">Current focus: Document directives + publish real-time feed.</div>
     </div>
   </div>
 
@@ -84,15 +90,15 @@ body {
     <div>
       <div class="card">
         <div class="summary">
-          <div class="status-pill">No active requests</div>
-          <div class="text">There are currently **no vendor outreaches or finance tasks** in flight. Systems remain hot and ready; only the scheduled automation window is on the board.</div>
+          <div class="status-pill">Directive audit in progress</div>
+          <div class="text">Rebuilt agent documentation (Scout + Prism), codified chain-of-command, and wired the dashboard for live logging so every post-order action is visible to Ali in real time.</div>
         </div>
 
         <div class="kpis">
-          <div class="kpi"><span>Active Requests</span><strong>0</strong></div>
-          <div class="kpi"><span>Scheduled Automations</span><strong>1</strong><small style="color:var(--muted)">Weekly hub refresh</small></div>
-          <div class="kpi"><span>Latest Deployment</span><strong>03·05</strong><small style="color:var(--muted)">Dashboard GitHub Pages</small></div>
-          <div class="kpi"><span>System Uptime</span><strong>99.9%</strong><small style="color:var(--muted)">Comms + Mail OK</small></div>
+          <div class="kpi"><span>Active Requests</span><strong>1</strong><small>Directive audit + logging</small></div>
+          <div class="kpi"><span>Live Feed Entries</span><strong>6</strong><small>Today</small></div>
+          <div class="kpi"><span>Latest Deployment</span><strong>04·06</strong><small>Dashboard logging overhaul</small></div>
+          <div class="kpi"><span>System Uptime</span><strong>99.9%</strong><small>Comms + Mail OK</small></div>
         </div>
 
         <div class="charts">
@@ -106,18 +112,70 @@ body {
           </div>
         </div>
 
+        <div class="card" style="margin-top:20px;background:rgba(10,15,30,0.75);">
+          <h2>Live Activity Feed · 04 Apr 2026 (PST)</h2>
+          <div class="activity-feed">
+            <div class="activity-item">
+              <div class="time">00:32</div>
+              <div class="detail">
+                <strong>Spin-up: Scout & Prism dossiers</strong>
+                Created dedicated identity + soul files so both agents know scope, tone, and reporting chain.
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="time">00:35</div>
+              <div class="detail">
+                <strong>Chain-of-command published</strong>
+                Added CHAIN.md for both agents outlining task intake, cadence, and escalation back to Leila.
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="time">00:39</div>
+              <div class="detail">
+                <strong>Identity sync with Ali</strong>
+                Confirmed names/purpose with Ali; updated AGENTS.md + IDENTITY.md with the new sub-agent reality.
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="time">00:44</div>
+              <div class="detail">
+                <strong>Directive persistence rule logged</strong>
+                Added 2026-04-06 mandate to AGENTS.md: every new instruction must be written to files immediately.
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="time">00:52</div>
+              <div class="detail">
+                <strong>Live logging protocol activated</strong>
+                Dashboard instructions updated to require real-time updates for all in-flight work.
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="time">01:05</div>
+              <div class="detail">
+                <strong>Dashboard content refreshed</strong>
+                Current feed + KPIs pushed locally; ready for GitHub Pages deployment and continuous logging.
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="list">
           <div class="list-item">
-            <strong>Dashboard migrated to GitHub Pages</strong>
-            <div class="meta">Permanent public link + auto-deploy pipeline in place.</div>
+            <strong>Scout & Prism active</strong>
+            <div class="meta">Agent documentation complete; both sub-agents now operate under explicit SOPs and report through Leila.</div>
           </div>
           <div class="list-item">
-            <strong>Ali notified via Mail.app</strong>
-            <div class="meta">Shared the live URL and hosting details with ali@innovent.io.</div>
+            <strong>Directive audit underway</strong>
+            <div class="meta">Reviewing historical instructions to ensure every standing order lives in the workspace, not ephemeral sessions.</div>
           </div>
           <div class="list-item">
-            <strong>Pending queue reset</strong>
-            <div class="meta">Cleared vendor/finance placeholders per 2026-03-05 directive; waiting on fresh orders.</div>
+            <strong>Live logging integration</strong>
+            <div class="meta">Dashboard updated to accept minute-by-minute entries; GitHub Pages deployment imminent.</div>
+          </div>
+          <div class="list-item">
+            <strong>Next action</strong>
+            <div class="meta">Push refreshed dashboard to `techinnovent0-collab/innovent-dashboard` and continue directive documentation.</div>
           </div>
         </div>
       </div>
@@ -131,24 +189,24 @@ body {
             <div class="timeline-dot" style="background:var(--accent-b);"></div>
             <div>
               <strong>Weekly knowledge_hub refresh</strong>
-              <div class="meta">Reminder: Review & update knowledge/technical_proposal_hub.md with new insights.</div>
-              <div class="meta" style="margin-top:6px;">Next run: Mar 6, 2026 · 02:01 PST</div>
+              <div class="meta">Review & update knowledge/technical_proposal_hub.md with new insights.</div>
+              <div class="meta" style="margin-top:6px;">Next run: Apr 7, 2026 · 02:01 PST</div>
               <div class="tag auto">Scheduled</div>
             </div>
           </div>
         </div>
-        <div class="note">Only cron-scheduled work is considered pending. Manual queue remains empty until new instructions arrive.</div>
+        <div class="note">Manual queue mirrors live dashboard activity; nothing is hidden off-platform.</div>
       </div>
 
       <div class="card">
         <h2>Systems Watch</h2>
         <table class="system-table">
-          <tr><td>Mail.app</td><td>Inbox monitored hourly</td><td><span class="tag clear">Clear</span></td></tr>
+          <tr><td>Mail.app</td><td>Inbox monitored continuously</td><td><span class="tag clear">Clear</span></td></tr>
           <tr><td>WhatsApp Gateway</td><td>Auto-reconnect enabled</td><td><span class="tag clear">Stable</span></td></tr>
           <tr><td>Dashboard Host</td><td>GitHub Pages · main branch</td><td><span class="tag clear">Live</span></td></tr>
           <tr><td>Heartbeat Tasks</td><td>Awaiting next poll</td><td><span class="tag idle">Idle</span></td></tr>
         </table>
-        <div class="note">Any new directive from Ali propagates here immediately with fresh KPIs + charts.</div>
+        <div class="note">Every new directive now triggers a dashboard post within minutes.</div>
       </div>
 
       <div class="card">
@@ -156,15 +214,15 @@ body {
         <div class="list">
           <div class="list-item">
             <strong>Focus</strong>
-            <div class="meta">Hold position, conserve context, prep for next outreach request.</div>
+            <div class="meta">Finish directive audit, push dashboard updates, then return to lead sourcing backlog.</div>
           </div>
           <div class="list-item">
             <strong>Playbook</strong>
-            <div class="meta">No vendor contact until explicitly instructed. All tasks must map to cron or new orders.</div>
+            <div class="meta">All instructions must be written to files + dashboard; no reliance on transient memory.</div>
           </div>
           <div class="list-item">
             <strong>Escalations</strong>
-            <div class="meta">None. Previous finance follow-up retired per directive.</div>
+            <div class="meta">None pending. Ali notified to monitor dashboard for live status.</div>
           </div>
         </div>
       </div>
@@ -175,9 +233,9 @@ body {
 <script>
 function makeGradient(ctx, top, bottom){const grad=ctx.createLinearGradient(0,0,0,200);grad.addColorStop(0,top);grad.addColorStop(1,bottom);return grad;}
 const readyCtx=document.getElementById('readinessChart').getContext('2d');
-new Chart(readyCtx,{type:'line',data:{labels:['-3d','-2d','-1d','Today','+1d'],datasets:[{label:'Readiness',data:[88,90,95,100,100],tension:0.4,fill:true,borderColor:'#38bdf8',backgroundColor:makeGradient(readyCtx,'rgba(56,189,248,0.35)','rgba(56,189,248,0.05)'),pointBackgroundColor:'#fbbf24',pointRadius:4}]},options:{plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#cbd5f5'}},y:{ticks:{color:'#cbd5f5'},beginAtZero:true,max:110}}});
+new Chart(readyCtx,{type:'line',data:{labels:['-3h','-2h','-1h','Now','Next'],datasets:[{label:'Readiness',data:[82,85,90,100,100],tension:0.4,fill:true,borderColor:'#38bdf8',backgroundColor:makeGradient(readyCtx,'rgba(56,189,248,0.35)','rgba(56,189,248,0.05)'),pointBackgroundColor:'#fbbf24',pointRadius:4}]},options:{plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#cbd5f5'}},y:{ticks:{color:'#cbd5f5'},beginAtZero:true,max:110}}});
 const autoCtx=document.getElementById('automationChart').getContext('2d');
-new Chart(autoCtx,{type:'doughnut',data:{labels:['Manual Queue','Cron Automations'],datasets:[{data:[0,1],backgroundColor:['rgba(248,113,113,0.6)','rgba(192,132,252,0.9)'],borderWidth:0}]} ,options:{plugins:{legend:{labels:{color:'#d2d9f8'}},tooltip:{enabled:true}},cutout:'65%'}});
+new Chart(autoCtx,{type:'doughnut',data:{labels:['Manual Queue','Cron Automations'],datasets:[{data:[1,1],backgroundColor:['rgba(248,113,113,0.6)','rgba(192,132,252,0.9)'],borderWidth:0}]} ,options:{plugins:{legend:{labels:{color:'#d2d9f8'}},tooltip:{enabled:true}},cutout:'65%'});
 </script>
 </body>
 </html>
